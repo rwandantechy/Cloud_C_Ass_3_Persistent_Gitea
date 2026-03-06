@@ -226,34 +226,3 @@ If my container crashes tomorrow, I can just:
 
 I thought Docker was the whole solution. But really Docker is just the app - the data needs its own home separate from the container.
 
----
-
-## Evidence Documentation
-
-This deployment includes the following evidence:
-
-### Directory Structure
-The `/data/assignment3/` directory shows successful separation of concerns:
-
-```
-/data/assignment3/
-├── backups/
-│   └── gitea-backup-2026-03-05.tar.gz  (S3-backed compressed backup)
-├── compose/
-│   └── docker-compose.yml               (Container orchestration config)
-└── gitea/                               (EBS-mounted persistent data)
-    ├── gitea-repositories/              (User repositories)
-    ├── gitea/                           (Gitea config & database)
-    ├── git/                             (Git repositories)
-    ├── indexers/                        (Search indices)
-    ├── jwt/                             (Authentication keys)
-    ├── sessions/                        (User sessions)
-    └── [other Gitea directories]
-```
-
-## References
-
-- [Gitea Documentation](https://docs.gitea.io/)
-- [Docker Documentation](https://docs.docker.com/)
-- [AWS EBS Documentation](https://docs.aws.amazon.com/ebs/)
-- [AWS S3 Documentation](https://docs.aws.amazon.com/s3/)
